@@ -1,0 +1,17 @@
+---
+- stat:
+    path: /home/vagrant/.ssh/id_rsa
+  register: op
+
+- name: Generating ssh key pair
+  command: ssh-keygen -t rsa -b 4096 -f "/home/vagrant/.ssh/id_rsa" -q -N ""
+  when: op.stat.exists == false
+
+- debug: 
+    msg: "Key pair already exists. Using the same key."
+  when: op.stat.exists
+
+- name: Copy public key to the nodes
+  command: sshpass -p "{{ item.password }}" ssh-copy-id "{{ item.username }}"@"{{ node }}"
+  with_items:
+    - "{{ credentials }}"

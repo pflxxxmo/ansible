@@ -1,0 +1,13 @@
+---
+- name: test nginx
+  hosts: nginx
+  tasks:
+    - name: check 80 port
+      wait_for:
+        port: 80
+        connect_timeout: 1
+        timeout: 5
+
+    - name: check nginx running
+      shell: ps -ef | grep -v gerp | grep "nginx. master process"
+      changed_when: no

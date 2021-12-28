@@ -1,0 +1,49 @@
+---
+- name: install postgresql
+  yum: name={{ item }} state=installed
+  with_items:
+    - postgresql
+    - postgresql-server
+    - python-psycopg2
+  become: true
+
+- name: check postgresql is initialized
+  ansible.builtin.stat:
+    path: /var/lib/pgsql/data/pg_hba.conf
+  register: postgres_data
+  become: true
+
+- name: initialize postgresql
+  shell: postgresql-setup initdb
+  when: not postgres_data.stat.exists
+  become: true
+  become_user: postgres
+
+- name: start and enable db
+  service: name=postgresql state=started
+  become: true
+
+- name: create app database
+  community.postgresql.postgresql_db:
+    state: present
+    name: "{{ db_name }}"
+  become: true
+  become_user: postgres
+
+- name: create db user
+  community.postgresql.postgresql_user:
+    state: present
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+  become: true
+  become_user: postgres
+
+- name: grant user access to db
+  community.postgresql.postgresql_privs:
+    type: database
+    database: "{{ db_name }}"
+    roles: "{{ db_user }}"
+    grant_option: no
+    privs: all
+  become: true
+  become_user: postgres

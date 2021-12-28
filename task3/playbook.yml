@@ -1,0 +1,33 @@
+---
+- name: install nginx
+  hosts: nginx
+  roles:
+    - nginx-install
+
+- name: passwordless-ssh
+  hosts: localhost
+  roles:
+    - passwordless-ssh
+
+- name: passwordless-ssh
+  connection: local
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    namesdb:
+    - {name: Dzmitry, surname: Asetnik}
+    - {name: Phillip, surname: Haslett}
+    - {name: Veronika, surname: Hettlinger}
+
+  tasks:
+  - name: raw data
+    debug: var=namesdb
+
+  - name: default emails
+    debug: msg={{ namesdb | email() }}
+
+  - name: custom prefix
+    debug: msg={{ namesdb | email('bsuir.by') }}
+
+

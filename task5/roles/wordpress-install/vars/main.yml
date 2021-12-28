@@ -1,0 +1,4 @@
+image_name: wordpress
+image_tag: custom
+container_name: wordpress
+name_of_sql: mysql

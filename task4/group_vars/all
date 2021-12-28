@@ -1,0 +1,19 @@
+---
+credentials:
+  - username: dzmitry_asetnik
+    password: $6$D65ClFWHCAR253gN$BT5BM.M8ylRRRVbn/9u/qsOPPimyZs4PX.r.FyZ5yGgtOmMVdYB/KcmND2Ox7dpl3YVY7/ZCaTUG6teQ/dZVw/
+    notenc_pass: password
+  - username: phillip_haslett
+    password: $6$D65ClFWHCAR253gN$BT5BM.M8ylRRRVbn/9u/qsOPPimyZs4PX.r.FyZ5yGgtOmMVdYB/KcmND2Ox7dpl3YVY7/ZCaTUG6teQ/dZVw/
+    notenc_pass: password
+  - username: veronika_hettlinger
+    password: $6$D65ClFWHCAR253gN$BT5BM.M8ylRRRVbn/9u/qsOPPimyZs4PX.r.FyZ5yGgtOmMVdYB/KcmND2Ox7dpl3YVY7/ZCaTUG6teQ/dZVw/
+    notenc_pass: password
+  - username: onemoreuser
+    password: $6$D65ClFWHCAR253gN$BT5BM.M8ylRRRVbn/9u/qsOPPimyZs4PX.r.FyZ5yGgtOmMVdYB/KcmND2Ox7dpl3YVY7/ZCaTUG6teQ/dZVw/
+    notenc_pass: password
+  - username: oneonemoreuser
+    password: $6$D65ClFWHCAR253gN$BT5BM.M8ylRRRVbn/9u/qsOPPimyZs4PX.r.FyZ5yGgtOmMVdYB/KcmND2Ox7dpl3YVY7/ZCaTUG6teQ/dZVw/
+    notenc_pass: password
+
+node: 192.168.33.2

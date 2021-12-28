@@ -1,0 +1,12 @@
+---
+- name: install nginx
+  hosts: nginx
+  tags: provision
+  roles:
+    - provision-vhosts
+
+- name: passwordless-ssh
+  hosts: localhost
+  tags: always
+  roles:
+    - passwordless-ssh

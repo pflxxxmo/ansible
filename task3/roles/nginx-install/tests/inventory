@@ -1,0 +1,2 @@
+[nginx]
+192.168.33.2 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_public_key_file=/home/vagrant/.ssh/id_rsa.pub

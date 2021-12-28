@@ -1,0 +1,33 @@
+---
+- name: create wordpress directory
+  file:
+    path: /opt/wordpress
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: 0755
+  become: true
+
+- name: create dockerfile
+  template:
+    src: templates/Dockerfile.j2
+    dest: /opt/wordpress/Dockerfile
+
+- name: build an image
+  community.docker.docker_image:
+    build:
+      path: /opt/wordpress
+    name: "{{ image_name }}"
+    tag: "{{ image_tag }}"
+    source: build
+  become: true
+
+- name: create container
+  community.docker.docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}:{{ image_tag }}"
+    ports: "8001:80"
+    network_mode: bridge
+    networks: 
+      - name: "{{ mysql.network_name }}"
+  become: true

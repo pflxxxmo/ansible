@@ -1,0 +1,12 @@
+---
+nginx_vhosts:
+  - ip: 127.0.0.1
+    name: dzmitry_asetnik
+  - ip: 127.0.0.1
+    name: phillip_haslett
+  - ip: 127.0.0.1
+    name: veronika_hettlinger
+  - ip: 127.0.0.1
+    name: onemoreuser
+  - ip: 127.0.0.1
+    name: oneonemoreuser

@@ -1,0 +1,13 @@
+---
+credentials:
+  - username: dzmitry_asetnik
+    password: password
+  - username: phillip_haslett
+    password: password
+  - username: veronika_hettlinger
+    password: password
+  - username: onemoreuser
+    password: password
+  - username: oneonemoreuser
+    password: password
+node: 192.168.33.2

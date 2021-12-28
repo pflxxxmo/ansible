@@ -1,0 +1,16 @@
+---
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes
+  become: true
+
+- name: check user directory exist
+  stat:
+    path: /var/www/{{ item.username }}
+  register: exist_directory
+  with_items:
+    - "{{ credentials }}"
+
+- name: report a missing directory
+  debug:
+    msg: "Directory doesn't exist"
+  when: not exist_directory.stat.exists

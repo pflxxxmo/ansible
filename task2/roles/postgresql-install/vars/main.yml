@@ -1,0 +1,4 @@
+---
+db_user: postgresqluser
+db_password: strongpassword
+db_name: app

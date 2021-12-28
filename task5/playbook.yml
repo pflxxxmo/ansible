@@ -1,0 +1,5 @@
+---
+- name: install wordpress
+  hosts: wordpress
+  roles:
+    - wordpress-install

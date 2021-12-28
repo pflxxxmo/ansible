@@ -1,0 +1,25 @@
+---
+- name: install nginx and epel-release
+  block:
+    - name: install epel-release
+      yum: name=epel-release state=present
+      become: true
+
+    - name: installing the latest version of nginx
+      yum: name=nginx state=present
+      tags: installation
+      become: true
+
+  rescue:
+    - debug:
+        msg: "Failed install nginx and epel-release"
+
+- name: create users
+  user:
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    state: present
+  become: true
+  tags: users
+  with_items:
+    - "{{ credentials }}"

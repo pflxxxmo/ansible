@@ -1,0 +1,32 @@
+---
+- name: Install nginx
+  hosts: all
+  tasks:
+    - name: epel-release
+      yum: name=epel-release state=latest
+      become: yes
+    - name: ensure nginx is at the latest version
+      yum: name=nginx state=latest
+      become: yes
+    - name: copy the content of the web site
+      copy:
+        src: /home/vagrant/index.html
+        dest: /usr/share/nginx/html/
+      become: yes
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
+          enabled: yes
+      become: yes
+- name: Check configuration
+  hosts: all
+  tasks:
+    - name: Check 80 port
+      wait_for:
+        port: 80
+        connect_timeout: 1
+        timeout: 5
+    - name: Check nginx running
+      shell: ps -ef | grep -v grep | grep "nginx. master process"
+      changed_when: no

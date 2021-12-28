@@ -1,0 +1,12 @@
+---
+- name: install nginx
+  gather_facts: no
+  hosts: nginx
+  roles:
+    - nginx-install
+
+- name: install postgresql
+  gather_facts: no
+  hosts: postgresql
+  roles:
+    - postgresql-install

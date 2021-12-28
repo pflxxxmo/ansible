@@ -1,0 +1,3 @@
+image_name: mysql
+image_tag: custom
+container_name: mysql
